@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject startScreen;
     public GameObject options;
     public GameObject extraScreen;
+    public GameObject creditScreen;
     public GameObject quit;
 
     public AudioClip impact;
@@ -53,6 +54,13 @@ public class GameManager : MonoBehaviour
         options.SetActive(false);
         extraScreen.SetActive(false);
         startScreen.SetActive(true);
+    }
+
+    public void OnCreditPress()
+    {
+        click.PlayOneShot(impact, 0.7F);
+        startScreen.SetActive(false);
+        creditScreen.SetActive(true);
     }
     public void OnQuitPress()
     {
