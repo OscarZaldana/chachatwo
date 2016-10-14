@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject mainMenu;
 
 	// Use this for initialization
 	void Start ()
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayButtonPress()
     {
+        mainMenu.SetActive(false);
         SceneManager.LoadScene("test", LoadSceneMode.Additive);
     }
         
