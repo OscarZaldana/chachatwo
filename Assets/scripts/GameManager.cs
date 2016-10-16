@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject options;
     public GameObject extraScreen;
     public GameObject creditScreen;
+    public GameObject flashlight;
     public GameObject quit;
 
     public AudioClip impact;
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         click.PlayOneShot(impact, 0.7F);
         mainMenu.SetActive(false);
-        SceneManager.LoadScene("test", LoadSceneMode.Additive);
+        SceneManager.LoadScene("tony", LoadSceneMode.Additive);
     }
 
     public void OnOptionPress()
@@ -40,6 +42,11 @@ public class GameManager : MonoBehaviour
         click.PlayOneShot(impact, 0.7F);
         startScreen.SetActive(false);
         options.SetActive(true);
+    }
+
+    public void OnFlashLightPress()
+    {
+        click.PlayOneShot(impact, 0.7f);
     }
 
     public void OnExtraPress()
