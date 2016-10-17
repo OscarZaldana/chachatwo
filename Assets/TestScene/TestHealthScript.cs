@@ -40,6 +40,7 @@ public class TestHealthScript : MonoBehaviour
 	void Update ()
     {
         LoseHealth();
+        RegenHealth();
 	}
 
     void LoseHealth()
@@ -58,20 +59,21 @@ public class TestHealthScript : MonoBehaviour
     }
     void RegenHealth()
     {
-        if(!isSeen)
+        if(!isSeen && health < startingHealth && !isDead)
         {
             healing = true;
             if(healing)
             {
                 float healthDecay = startingHealth / healthDecrease;
                 health += healthDecay * Time.deltaTime;
-                float newAlpha = 1.0f + (health / startingHealth);
+                float newAlpha = -1.0f + (health / startingHealth);
                 staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
             }
-        }
-        if(health == startingHealth)
-        {
-            healing = false;
+            else if (health <= 100)
+            {
+                healing = false;
+                Start();
+            }
         }
     }
 }
