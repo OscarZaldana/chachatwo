@@ -7,9 +7,15 @@ public class TestHealthScript : MonoBehaviour
 {
     public float health = 100f;
     private float startingHealth;
+    
     public float healthDecrease = 5.0f;
+
+    public bool isSeen = false;
+    public bool healing = false;
+    public bool isDead = false;
     
     public Renderer staticRenderer;
+
 
 	// Use this for initialization
 	void Start ()
@@ -22,7 +28,7 @@ public class TestHealthScript : MonoBehaviour
         {
             staticRenderer = staticObject.GetComponent<Renderer>();
 
-            staticRenderer.material.color = new Color(0, 0, 0, 0);
+            staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
         else
         {
@@ -38,17 +44,34 @@ public class TestHealthScript : MonoBehaviour
 
     void LoseHealth()
     {
-        float healthDecay = startingHealth / healthDecrease;
-
-        //health -= healthDecay * Time.deltaTime;
-
-        float newAlpha = 1.0f - health / startingHealth;
-
-        staticRenderer.material.color += new Color(1, 1, 1, newAlpha);
-
-        if (health <= 0)
+        if(isSeen && !isDead)
         {
-            Debug.Log("I died! :(");
+            float healthDecay = startingHealth / healthDecrease;
+            health -= healthDecay * Time.deltaTime;
+            float newAlpha = 1.0f - (health / startingHealth);
+            staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
+        }
+        if(health <= 0)
+        {
+            isDead = true;
+        }
+    }
+    void RegenHealth()
+    {
+        if(!isSeen)
+        {
+            healing = true;
+            if(healing)
+            {
+                float healthDecay = startingHealth / healthDecrease;
+                health += healthDecay * Time.deltaTime;
+                float newAlpha = 1.0f + (health / startingHealth);
+                staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
+            }
+        }
+        if(health == startingHealth)
+        {
+            healing = false;
         }
     }
 }

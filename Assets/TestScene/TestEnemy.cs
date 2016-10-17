@@ -4,10 +4,10 @@ using System.Collections;
 public class TestEnemy : MonoBehaviour
 {
     public Transform target;
-    public TestHealthScript healthLoss;
+    public TestHealthScript canSee;
     public int moveSpeed;
     public int rotationSpeed;
-    public int maxdistance;
+    public float maxdistance;
     private Transform myTransform;
     //------------------------------------//    
 
@@ -20,7 +20,7 @@ public class TestEnemy : MonoBehaviour
     void Start()
     {
 
-        maxdistance = 2;
+        
     }
 
 
@@ -30,11 +30,17 @@ public class TestEnemy : MonoBehaviour
 
         if (Vector3.Distance(target.position, myTransform.position) > maxdistance)
         {
+            canSee.isSeen = true;
             //Move towards target
             transform.LookAt(target.position);
             
             myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
 
+        }
+
+        else
+        {
+            canSee.isSeen = false;
         }
     }
 }
