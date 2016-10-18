@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject flashlight;
     public GameObject quit;
 
+    
+
     public AudioClip impact;
     AudioSource click;
 
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         click.PlayOneShot(impact, 0.7F);
         mainMenu.SetActive(false);
-        SceneManager.LoadScene("TestScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Test", LoadSceneMode.Additive);
     }
 
     public void OnOptionPress()
