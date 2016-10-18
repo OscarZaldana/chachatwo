@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         click.PlayOneShot(impact, 0.7F);
         mainMenu.SetActive(false);
-        SceneManager.LoadScene("SlenderGame", LoadSceneMode.Additive);
+        SceneManager.LoadScene("TestScene", LoadSceneMode.Additive);
     }
 
     public void OnOptionPress()
