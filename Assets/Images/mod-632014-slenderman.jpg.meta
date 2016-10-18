@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< develop
 guid: da2a58940b5cc454fbe8cb9892dbd3f5
 timeCreated: 1476750858
+=======
+guid: c38cc460d168f634fb2cbc86100f292f
+timeCreated: 1476750647
+>>>>>>> Working On Reset Button
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

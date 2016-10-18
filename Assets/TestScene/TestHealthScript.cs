@@ -69,7 +69,7 @@ public class TestHealthScript : MonoBehaviour
             {
                 float healthDecay = startingHealth / healthDecrease;
                 health += healthDecay * Time.deltaTime;
-                float newAlpha = -1.0f + (health / startingHealth);
+                float newAlpha = 1.0f - (health / startingHealth);
                 staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
             }
             else if (health <= 100)
