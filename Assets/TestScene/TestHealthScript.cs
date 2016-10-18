@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class TestHealthScript : MonoBehaviour
 {
+    public GameObject gameOver;
+
     public float health = 100f;
     private float startingHealth;
     
@@ -54,6 +56,7 @@ public class TestHealthScript : MonoBehaviour
         }
         if(health <= 0)
         {
+            gameOver.SetActive(true);
             isDead = true;
         }
     }
