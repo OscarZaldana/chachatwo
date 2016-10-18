@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Return : MonoBehaviour
 {
+    public string levelToLoad = "";
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
 	
 	}
@@ -19,6 +20,6 @@ public class Return : MonoBehaviour
 
     public void OnMainMenuDown()
     {
-        SceneManager.LoadScene("Dmoney", LoadSceneMode.Additive);
+        Application.LoadLevel(levelToLoad);
     }
 }
