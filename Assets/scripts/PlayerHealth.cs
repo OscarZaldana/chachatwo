@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Rendering;
     
 
-public class TestHealthScript : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public GameObject gameOver;
 
@@ -18,9 +18,12 @@ public class TestHealthScript : MonoBehaviour
     
     public Renderer staticRenderer;
 
+    public AudioClip impact;
+    AudioSource noise;
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
     {
         startingHealth = health;
 
@@ -36,7 +39,9 @@ public class TestHealthScript : MonoBehaviour
         {
             Debug.LogWarning("Oops! Not here!");
         }
-	}
+
+        noise = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -52,10 +57,13 @@ public class TestHealthScript : MonoBehaviour
             float healthDecay = startingHealth / healthDecrease;
             health -= healthDecay * Time.deltaTime;
             float newAlpha = 1.0f - (health / startingHealth);
+            float newNoise = 0.9f - (health / startingHealth);
             staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
+            noise.PlayOneShot(impact, newNoise);
         }
         if(health <= 0)
         {
+            noise.Stop();
             gameOver.SetActive(true);
             isDead = true;
         }
@@ -70,7 +78,9 @@ public class TestHealthScript : MonoBehaviour
                 float healthDecay = startingHealth / healthDecrease;
                 health += healthDecay * Time.deltaTime;
                 float newAlpha = 1.0f - (health / startingHealth);
+                float newNoise = 0.9f - (health / startingHealth);
                 staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
+                noise.PlayOneShot(impact, newNoise);
             }
             else if (health <= 100)
             {
