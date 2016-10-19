@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(isSeen && !isDead)
         {
+            healing = false;
             float healthDecay = startingHealth / healthDecrease;
             health -= healthDecay * Time.deltaTime;
             float newAlpha = 1.0f - (health / startingHealth);
