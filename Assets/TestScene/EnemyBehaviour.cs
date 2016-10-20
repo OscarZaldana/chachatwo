@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public TestHealthScript player;
+    public PlayerHealth player;
 
 	// Use this for initialization
 	void Start ()
