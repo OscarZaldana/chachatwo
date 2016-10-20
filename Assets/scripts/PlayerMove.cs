@@ -10,6 +10,10 @@ public class PlayerMove : MonoBehaviour
     float moveFB;
     float moveLR;
 
+    public bool isPaused = false;
+
+    public GameObject pauseMenu;
+
    // public GameObject eyes;
 
     //float rotX;
@@ -37,5 +41,19 @@ public class PlayerMove : MonoBehaviour
 
         movement = transform.rotation * movement;
         player.Move(movement * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseMenu.SetActive(true);
+            isPaused = !isPaused;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(false);
+            isPaused = false;
+        }
+        
+        
+        Time.timeScale = isPaused ? 0 : 1;
     }
 }
