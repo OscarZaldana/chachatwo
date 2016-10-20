@@ -14,7 +14,9 @@ public class PlayerMove : MonoBehaviour
 
     public GameObject pauseMenu;
 
-   // public GameObject eyes;
+    public string levelToLoad = "";
+
+    // public GameObject eyes;
 
     //float rotX;
     //float rotY;
@@ -42,18 +44,29 @@ public class PlayerMove : MonoBehaviour
         movement = transform.rotation * movement;
         player.Move(movement * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.P))
+        PauseGame();
+        
+        
+        Time.timeScale = isPaused ? 0 : 1;
+    }
+
+    void PauseGame()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
         {
             pauseMenu.SetActive(true);
-            isPaused = !isPaused;
+            isPaused = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+
+        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             pauseMenu.SetActive(false);
             isPaused = false;
         }
-        
-        
-        Time.timeScale = isPaused ? 0 : 1;
+
+        if(Input.GetKeyDown(KeyCode.Space) && isPaused)
+        {
+            Application.LoadLevel(levelToLoad);
+        }
     }
 }
