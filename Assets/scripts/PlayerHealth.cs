@@ -27,13 +27,16 @@ public class PlayerHealth : MonoBehaviour
     {
         startingHealth = health;
 
-        GameObject staticObject = GameObject.Find("StaticObject");
+        GameObject staticObject = GameObject.Find("Plane");
 
         if(staticObject)
         {
             staticRenderer = staticObject.GetComponent<Renderer>();
+            
 
-            staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            staticRenderer.sharedMaterial.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            
+          
         }
         else
         {
@@ -80,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
                 health += healthDecay * Time.deltaTime;
                 float newAlpha = 1.0f - (health / startingHealth);
                 float newNoise = 0.9f - (health / startingHealth);
-                staticRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
+                staticRenderer.sharedMaterial.color = new Color(1.0f, 1.0f, 1.0f, newAlpha);
                 noise.PlayOneShot(impact, newNoise);
             }
             else if (health <= 100)
