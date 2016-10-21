@@ -68,6 +68,7 @@ public class PlayerMove : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) && isPaused)
         {
+            AudioListener.volume = 1;
             Application.LoadLevel(levelToLoad);
         }
     }
