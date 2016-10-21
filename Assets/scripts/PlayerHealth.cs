@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     {
         startingHealth = health;
 
-        GameObject staticObject = GameObject.Find("Plane");
+        GameObject staticObject = GameObject.Find("StaticObject");
 
         if(staticObject)
         {
