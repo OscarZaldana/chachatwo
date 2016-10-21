@@ -56,12 +56,14 @@ public class PlayerMove : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             isPaused = true;
+            AudioListener.volume = 0;
         }
 
         else if(Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             pauseMenu.SetActive(false);
             isPaused = false;
+            AudioListener.volume = 1;
         }
 
         if(Input.GetKeyDown(KeyCode.Space) && isPaused)
